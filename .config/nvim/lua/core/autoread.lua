@@ -1,0 +1,34 @@
+-- local M = {}
+--
+-- local autoread_enabled = false
+-- local group = vim.api.nvim_create_augroup("AutoReadToggleGroup", { clear = true })
+--
+-- function M.toggle()
+--   autoread_enabled = not autoread_enabled
+--
+--   if autoread_enabled then
+--     vim.o.autoread = true
+--     vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
+--       group = group,
+--       pattern = { "*" },
+--       command = "if mode() != 'c' | checktime | endif",
+--       desc = "Auto-read buffers on file change",
+--     })
+--     vim.api.nvim_create_autocmd("FileChangedShellPost", {
+--       group = group,
+--       pattern = { "*" },
+--       command = 'echohl WarningMsg | echo "File changed on disk. Buffer reloaded." | echohl None',
+--       desc = "Show message on external file change",
+--     })
+--     print "📂 [AutoRead] ENABLED"
+--   else
+--     vim.o.autoread = false
+--     vim.api.nvim_clear_autocmds { group = group }
+--     print "📁 [AutoRead] DISABLED"
+--   end
+-- end
+--
+-- -- Optional keybind
+-- vim.keymap.set("n", "<leader>ar", M.toggle, { desc = "Toggle autoread" })
+--
+-- return M
